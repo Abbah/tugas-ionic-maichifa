@@ -16,7 +16,7 @@
 <ion-content padding>
   <ion-list>
     <ion-item *ngFor="let musik of lagu;let i = index;" (click)="buttonClick(musik.load,i)">
-        {{ btnState[i] == false ? 'Play':'Stop' }} {{musik.title}}
+        {{ btnState[i] == false ? 'Play':'Stop' }} {{ i }} {{musik.title}}
       <ion-icon name="rose" item-end></ion-icon>
     </ion-item>
   </ion-list>

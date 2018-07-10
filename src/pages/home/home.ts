@@ -48,7 +48,6 @@ export class HomePage {
     <ion-tabs>
       <ion-tab tabTitle="Buku" [root]="tab1"></ion-tab>
       <ion-tab tabTitle="Musik" [root]="tab2"></ion-tab>
-      <ion-tab tabTitle="Kamera" [root]="tab3"></ion-tab>
     </ion-tabs>`
 })
 export class TabHome {

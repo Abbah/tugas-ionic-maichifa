@@ -14,6 +14,7 @@ import { HttpClientModule, HttpHeaders, HttpClient } from '@angular/common/http'
 import { MusikPageModule } from '../pages/musik/musik.module';
 import { KameraPageModule } from '../pages/kamera/kamera.module';
 import { QRScanner } from '../../node_modules/@ionic-native/qr-scanner';
+import { NativeAudio } from '@ionic-native/native-audio';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { QRScanner } from '../../node_modules/@ionic-native/qr-scanner';
     StatusBar,
     SplashScreen,
     QRScanner,
+    NativeAudio,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     BookServiceProvider
   ]

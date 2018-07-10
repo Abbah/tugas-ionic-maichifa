@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { NativeAudio } from '@ionic-native/native-audio';
 
@@ -16,13 +16,13 @@ import { NativeAudio } from '@ionic-native/native-audio';
 })
 export class MusikPage {
   btnState: any[] = [];
-  constructor(public navCtrl: NavController, public navParams: NavParams, public nativeAudio: NativeAudio) {
+  constructor(public zone: NgZone,public navCtrl: NavController, public navParams: NavParams, public nativeAudio: NativeAudio) {
     this.nativeAudio.preloadSimple('garuda', 'assets/mp3/garuda.mp3');
     this.nativeAudio.preloadSimple('tanahair', 'assets/mp3/tanahair.mp3');
     this.nativeAudio.preloadSimple('merahputih', 'assets/mp3/merahputih.mp3');
+    this.btnState[0] = false;
     this.btnState[1] = false;
     this.btnState[2] = false;
-    this.btnState[3] = false;
   }
 
   ionViewDidLoad() {
@@ -38,13 +38,16 @@ export class MusikPage {
   }
 
   buttonClick(load,index){
-    if(this.btnState[index] == false){
-      this.playmusik(load)
-      this.btnState[index] == true
-    }else{
-      this.stopmusik(load)
-      this.btnState[index] == false;
-    }
+    this.zone.run(() => {
+      if(this.btnState[index] == false){
+        this.playmusik(load);
+        this.btnState[index] == true;
+      }else{
+        this.stopmusik(load)
+        this.btnState[index] == false;
+      }
+    })
+    
   }
 
   lagu = [
